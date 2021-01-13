@@ -1,0 +1,25 @@
+{  
+  "compilerOptions": {  
+  "target": "es6",  
+    "module": "commonjs",  
+    "rootDir": "src",  
+    "outDir": "dist",  
+    "strict": true,
+    "noImplicitAny": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,  
+    "lib": ["es2019", "dom"],
+    "esModuleInterop": true
+  },  
+  "include": [  
+    "src/**/*.ts"  
+  ],  
+  "exclude": [  
+    "node_modules"  
+  ]  
+}  

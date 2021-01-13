@@ -1,0 +1,19 @@
+mat-card {
+  margin: 20px;
+}
+input[type="file"] {
+  visibility: hidden;
+}
+
+button[type="submit"] {
+  margin-top: 20px;
+}
+
+.image-preview {
+  height: 5rem;
+  margin: 2rem 0;
+}
+
+.image-preview img {
+  height: 100%;
+}
