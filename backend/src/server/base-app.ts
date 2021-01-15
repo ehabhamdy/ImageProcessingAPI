@@ -1,9 +1,9 @@
-import express, { Router } from 'express';
+import express, { Request, Response, Router } from 'express';
 import bodyParser from 'body-parser';
 import AppConfig from './config/app-config';
 import * as path from 'path';
-import baseRouter from '../routes/base';
-import imagesRouter from '../routes/images';
+import baseRouter from '../routes/base.route';
+import imagesRouter from '../routes/image-processing.route';
 import morgan from 'morgan';
 
 export default abstract class BaseApp {
@@ -29,7 +29,9 @@ export default abstract class BaseApp {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use('/images', express.static(path.join(__dirname, '../images')));
     // console.log(path.join(__dirname, '../images'));
-
+    app.all('/', (_: Request, res: Response) => {
+      res.redirect('/api/base');
+    });
     app.use((_, res, next) => {
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader(

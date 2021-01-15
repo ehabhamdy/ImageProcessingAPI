@@ -1,5 +1,5 @@
 import Module from './module';
-import BaseExpressRoute from '../../routers/base-express-route';
+import BaseExpressRoute from '../../routes/base-express-route';
 
 export default class CompositeModule implements Module {
   constructor(private modules: Module[]) {}
