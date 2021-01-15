@@ -1,4 +1,4 @@
-import BaseExpressRoute from '../../routers/base-express-route';
+import BaseExpressRoute from '../../routes/base-express-route';
 
 export default interface Module {
   getExpressRoutes(): BaseExpressRoute[];
