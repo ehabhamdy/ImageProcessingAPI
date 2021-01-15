@@ -1,6 +1,7 @@
 import BaseApp from './base-app';
 import AppConfig from './config/app-config';
 import serverConfig from './config/values/server.config';
+import { Application } from 'express';
 
 export default class Server extends BaseApp {
   constructor() {
@@ -13,7 +14,7 @@ export default class Server extends BaseApp {
     return server;
   }
 
-  public getExpressApplication() {
+  public getExpressApplication(): Application {
     return this.app;
   }
 
