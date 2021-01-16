@@ -24,8 +24,28 @@ router.use(
     // remove original file image
     fs.unlinkSync(req.file.path);
 
-    res.status(200).send({ message: 'Success updated' });
+    const url = req.protocol + '://' + req.get('host');
+    const imagePath = url + '/images/resized/' + req.file.filename;
+
+    fs.readdirSync(path.join(__dirname, '../images/resized/')).forEach(
+      (file) => {
+        console.log('xx', file);
+      }
+    );
+
+    res.status(200).send({ message: imagePath });
   }
 );
+
+router.get('/', (req: Request, res: Response) => {
+  const url = req.protocol + '://' + req.get('host');
+
+  const images: string[] = [];
+  fs.readdirSync(path.join(__dirname, '../images/resized/')).forEach((file) => {
+    images.push(url + '/images/resized/' + file);
+  });
+
+  res.status(200).send({ message: 'succeeded', images: images });
+});
 
 export default router;
