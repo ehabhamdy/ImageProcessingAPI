@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   title = 'ImageProcessingFrontEnd';
   form: FormGroup;
   imagePreview = '';
+  images: string[];
 
   constructor(public imagesService: ImagesService) {}
 
@@ -32,6 +33,13 @@ export class AppComponent implements OnInit {
         validators: [Validators.required],
       }),
     });
+    this.fetchAllImages();
+  }
+
+  fetchAllImages(): void {
+    this.imagesService.fetchImages().subscribe((responseData) => {
+      this.images = responseData.images;
+    });
   }
 
   onSaveImage(): void {
@@ -41,7 +49,8 @@ export class AppComponent implements OnInit {
 
     const image = this.form.value.image;
     this.imagesService.addImage(image).subscribe((responseData) => {
-      console.log(responseData);
+      this.images.push(responseData.message);
+      // this.fetchAllImages();
     });
 
     this.form.reset();

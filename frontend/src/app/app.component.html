@@ -11,6 +11,11 @@
     </div>
 
     <button mat-raised-button color="accent" type="submit"> Save Post</button>
+
   </form>
 
+</mat-card>
+
+<mat-card>
+  <img class="image-preview" *ngFor="let imageURL of images" [src]="imageURL">
 </mat-card>
