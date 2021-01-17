@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node dist/index.js",
+    "start": "npm run build && node dist/index.js",
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test-init": "./node_modules/jasmine/bin/jasmine.js init",
-    "test": "tsc && cd src && jasmine",
-    "build": "tsc"
+    "test-init": "cd src && ./node_modules/jasmine/bin/jasmine.js init",
+    "test": "npm run build && cd src && jasmine",
+    "build": "tsc && npm run copy",
+    "copy": "cp -R src/images dist/"
   },
   "keywords": [],
   "author": "",
