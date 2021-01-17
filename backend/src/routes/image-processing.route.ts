@@ -1,6 +1,5 @@
 import express, { Request, Response, Router } from 'express';
 import multer from 'multer';
-// import sharp from 'sharp';
 import path from 'path';
 import * as fs from 'fs';
 import {
@@ -26,12 +25,6 @@ router.use(
 
     const url = req.protocol + '://' + req.get('host');
     const imagePath = url + '/images/resized/' + req.file.filename;
-
-    fs.readdirSync(path.join(__dirname, '../images/resized/')).forEach(
-      (file) => {
-        console.log('xx', file);
-      }
-    );
 
     res.status(200).send({ message: imagePath });
   }
