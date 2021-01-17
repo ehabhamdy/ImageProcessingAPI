@@ -1,10 +1,11 @@
-import express, { Request, Response, Router } from 'express';
+import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import AppConfig from './config/app-config';
 import * as path from 'path';
 import baseRouter from '../routes/base.route';
 import imagesRouter from '../routes/image-processing.route';
 import morgan from 'morgan';
+import { RouterModel } from '../models/router-model';
 
 export default abstract class BaseApp {
   protected app: express.Application = express();
@@ -46,7 +47,7 @@ export default abstract class BaseApp {
     });
   }
 
-  public getExpressRoutes(): Array<{ contextPath: string; router: Router }> {
+  public getExpressRoutes(): Array<RouterModel> {
     return [
       { contextPath: '/api/base', router: baseRouter },
       { contextPath: '/api/images', router: imagesRouter },
